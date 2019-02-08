@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "aksgur",
+    "database": "dev",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "aksgur",
+    "database": "test",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "aksgur",
+    "database": "prod",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}

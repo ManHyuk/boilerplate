@@ -1,0 +1,58 @@
+// exports.STATUS = {
+//   POST: {
+//     PENDING: 'PENDING',
+//     ACCEPT: 'ACCEPT',
+//     REJECT: 'REJECT',
+//     CANCEL: 'CANCEL',
+//     START: 'START'
+//   },
+//   MATCH: {
+//     PROGRESS: 'PROGRESS',
+//     DELIVER_DONE: 'DELIVER_DONE',
+//     RECEIVER_DONE: 'RECEIVER_DONE',
+//     DONE: 'DONE',
+//   }
+// };
+
+
+exports.POST_STATUS = {
+  PENDING: 'PENDING',
+  ACCEPT: 'ACCEPT',
+  REJECT: 'REJECT',
+  CANCEL: 'CANCEL',
+  START: 'START',
+  PROGRESS: 'PROGRESS',
+  DELIVER_DONE: 'DELIVER_DONE',
+  RECEIVER_DONE: 'RECEIVER_DONE',
+};
+
+exports.MATCH_STATUS = {
+  PROGRESS: 'PROGRESS',
+  DELIVER_CANCEL: 'DELIVER_CANCEL',
+  DELIVER_DONE: 'DELIVER_DONE',
+  RECEIVER_DONE: 'RECEIVER_DONE',
+  DONE: 'DONE',
+};
+
+exports.NOTIF_TYPE = {
+  SENDER_TO_RECEIVER: 'S_T_R',
+  RECEIVER_TO_SENDER: 'R_T_S',
+  DELIVER_TO_SENDER_RECEIVER: 'D_T_SR',
+  DELIVER_TO_RECEIVER: 'D_T_R',
+  RECEIVER_TO_DELIVER: 'R_T_D',
+  RECEIVER_TO_SENDER_DELIVER: 'R_T_SD',
+  SENDER_CANCEL: 'SENDER_CANCEL'
+};
+
+
+exports.ROLE_TYPE = {
+  SENDER: 'SENDER',
+  RECEIVER: 'RECEIVER',
+  DELIVER: 'DELIVER',
+  UNKNOWN: 'UNKNOWN'
+};
+
+exports.DEFAULT = {
+  AVATAR: 'https://metrodash.s3.ap-northeast-2.amazonaws.com/images/1533800311402_dc142465dadd5b622d5b28468e152456.jpg',
+  NOTI_IMG: '\'https://metrodash.s3.ap-northeast-2.amazonaws.com/images/1533800311402_dc142465dadd5b622d5b28468e152456.jpg',
+};
