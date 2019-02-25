@@ -12,28 +12,21 @@ module.exports = (app) => {
   };
 
   app.use((err, req, res, next) => {
-    // 에러 로그
-    if (env !== 'test') {
-      log.error(`\n\x1b[31m[ERROR Handler] \u001b[0m \n\x1b[34m[Request PATH - ${req.path}] \u001b[0m \n`, err);
+    // Custom error logging title.
+    const log_title = `\n\x1b[31m[ERROR Handler]\u001b[0m\n\x1b[34m[Request PATH - ${req.path}]\u001b[0m\n`;
+
+    // Custom error division.
+    let response = errors[isNaN(err) ? error_code.SERVER_ERROR : err];
+    if (err instanceof expressValidation.ValidationError) {  // Wrong Parameter
+      response = errors[error_code.INVALID_PARAMETER];
+      response.miss_param = err.errors.map(error => error.messages.join('. ')).join('\n');
     }
 
+    // Custom error logging.
+    log.error(log_title.concat(typeof response.miss_param !== 'undefined' ?
+      `\x1b[36m[Miss Params] \u001b[0m \n${response.miss_param}` : err));
 
-    let miss_param = false;
-    if (err instanceof expressValidation.ValidationError) {  // 잘못된 파라미터 확인
-      miss_param = err.errors.map(error => error.messages.join('. ')).join('\n');
-      if (env !== 'test') {
-        console.log(`\n\x1b[36m[Miss Params] \u001b[0m \n${miss_param}`);
-      }
-      err = error_code.INVALID_PARAMETER;
-    } else if (isNaN(err)) {  // 서버쪽 에러
-      err = error_code.SERVER_ERROR;
-    }
-
-    const response_error = errors[err];
-    response_error.miss_param = miss_param ? miss_param : undefined;
-
-    return res.status(response_error.status).json(
-      response_error
-    );
+    return res.status(response.status).json(response);
   });
+
 };
